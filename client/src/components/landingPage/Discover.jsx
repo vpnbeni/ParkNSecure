@@ -187,7 +187,7 @@ const App = () => {
   }, [activeTab]);
 
   return (
-    <div className="p-4">
+    <div className="p-4 sectioin-2">
       <h1 className="text-2xl font-bold mb-4">Discover how we can help</h1>
       <div className="flex justify-start mb-4">
         <button

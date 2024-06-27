@@ -20,11 +20,11 @@ const BrowseHomeCards = () => {
     { name: "Foreclosures", image: img8, amount: "34" },
   ];
   return (
-    <div className="section-1  px-64 py-20">
-      <div className="text-2xl font-semibold">
+    <div className="section-1 xl:px-64 py-20">
+      <div className="text-lg text-center lg:text-start pl-0 lg:pl-4 xl:text-2xl font-semibold">
         Browse homes in Los Angeles, CA
       </div>
-      <div className="grid grid-cols-4 gap-4 p-4">
+      <div className="grid xl:grid-cols-4 grid-cols-2 lg:grid-cols-3 gap-4 p-4">
         {data.map((item, index) => {
           return (
             <div
