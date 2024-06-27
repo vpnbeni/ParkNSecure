@@ -1,4 +1,6 @@
 /** @type {import('tailwindcss').Config} */
+import aspectRatio from '@tailwindcss/aspect-ratio';
+
 export default {
   mode: 'jit',
   content: [
@@ -8,5 +10,8 @@ export default {
   theme: {
     extend: {},
   },
-  plugins: [],
+  plugins: [
+    // ...
+    aspectRatio,
+  ],
 }

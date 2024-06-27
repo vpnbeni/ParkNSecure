@@ -1,6 +1,6 @@
 import bgImg from "../../images/hp-hero-desktop.jpg";
 import img1 from "../../images/17007063448808443733.png";
-import SearchBar from "./SearchBar";
+import SearchBar from "../SearchBar";
 const HeroSection = () => {
   return (
     <div
@@ -31,7 +31,10 @@ const HeroSection = () => {
         })}
       </div>
       <div className="flex mt-4 pt-1 justify-center items-center ">
-        <SearchBar />
+        <div className="w-10/12 md:w-1/2 xl:w-[30vw]"> 
+        <SearchBar  />
+
+        </div>
       </div>
       <div className="mb-0 mt-10 md:mt-4 pt-[3px] flex justify-center items-center text-white ">
         <img className="w-1/6 md:w-44" src={img1} alt="" />

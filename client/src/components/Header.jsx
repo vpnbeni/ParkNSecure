@@ -1,14 +1,14 @@
 import { Link } from "react-router-dom";
 import logo from "../images/logo-brand.png";
-import SidebarMenu from "./landingPage/SideBar";
+import SidebarMenu from "./SideBar";
 import { BsPersonCircle } from "react-icons/bs";
 const Header = () => {
   return (
     <>
       <div className="headerLg hidden lg:flex  items-center justify-center border-b-2">
-        <div className="logo flex items-center justify-center h-12 m-0 p-0">
+        <Link to={'/'} className="logo flex items-center justify-center h-12 m-0 p-0 cursor-pointer ">
           <img className="w-36    " src={logo} alt="" />
-        </div>
+        </Link>
         <div className="links flex mx-4">
           {[
             "Buy",
