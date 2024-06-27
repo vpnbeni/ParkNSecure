@@ -15,19 +15,19 @@ const Footer = () => {
         </div>
         <div className="flex  w-full md:w-auto">
           {[
-            <FaFacebook className=" text-black m-1 md:m-2 lg:m-3" />,
-            <FaXTwitter className=" text-black m-1 md:m-2 lg:m-3" />,
-            <FaLinkedinIn className=" text-black m-1 md:m-2 lg:m-3" />,
-            <FaPinterest className=" text-black m-1 md:m-2 lg:m-3" />,
-            <FaInstagram className=" text-black m-1 md:m-2 lg:m-3" />,
-            <FaYoutube className=" text-black m-1 md:m-2 lg:m-3" />,
-          ].map((item, index) => {
+            {id:0,value:<FaFacebook className=" text-black m-1 md:m-2 lg:m-3" />},
+            {id:1,value:<FaXTwitter className=" text-black m-1 md:m-2 lg:m-3" />},
+            {id:2,value:<FaLinkedinIn className=" text-black m-1 md:m-2 lg:m-3" />},
+            {id:3,value:<FaPinterest className=" text-black m-1 md:m-2 lg:m-3" />},
+            {id:4,value:<FaInstagram className=" text-black m-1 md:m-2 lg:m-3" />},
+            {id:5,value:<FaYoutube className=" text-black m-1 md:m-2 lg:m-3" />},
+          ].map((item) => {
             return (
               <Link
-                key={index}
+                key={item.id}
                 className="flex h-full text-xl  rounded-full items-center justify-center bg-white mx-2"
               >
-                {item}
+                {item.value}
               </Link>
             );
           })}
