@@ -9,3 +9,32 @@
     margin: 0;
     padding: 0;
 }
+
+.slider {
+    margin:0 20px;
+    overflow:"hidden";
+    padding:2rem 0;
+  }
+  
+  .slider img {
+    width: 100%;
+    
+  }
+  
+  .react-multi-carousel-list {
+  padding: 0rem 0 2rem 0;
+  }
+  
+  .custom-dot-list-style button{
+  border: none;
+  background: black;
+  }
+  .react-multi-carousel-dot.react-multi-carousel-dot--active button{
+  background: black!important;
+  }
+  .input-container {
+    width: 200px; /* Adjust width as per your design */
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}

@@ -28,13 +28,11 @@ const Section3Card = () => {
   ];
   return (
     <div className="section-1 xl:px-64 py-20">
-      <div className="text-lg text-center lg:text-start pl-0 lg:pl-4 xl:text-2xl font-semibold">
-        Browse homes in Los Angeles, CA
-      </div>
-      <div className="grid xl:grid-cols-4 grid-cols-2 lg:grid-cols-3 gap-4 p-4">
+      
+      <div className="flex flex-row overflow-x-auto lg:space-x-0 space-x-4 xl:grid xl:grid-cols-4 grid-cols-2 lg:grid-cols-3 gap-4 p-4">
         {data.map((item, index) => {
           return (
-            <div key={index} className=" shadow-lg rounded-lg">
+            <div key={index} className="w-[270px] md:w-auto  p-4 flex-shrink-0 shadow-lg rounded-lg">
               <div
                 className="card flex justify-between items-start h-[200px]  rounded-t-lg bg-cover  p-4"
                 style={{ backgroundImage: `url(${item.image})` }}

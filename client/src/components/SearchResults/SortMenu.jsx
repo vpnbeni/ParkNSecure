@@ -12,7 +12,7 @@ export default function SortMenu() {
       <div className="flex items-center justify-start">
       
         <div className="m-1 lg:m-3 w-9/12 md:w-auto ">
-          <SearchBar />
+          <SearchBar width={` `}/>
         </div>
         <Menu as="div" className="relative inline-block sm:hidden text-left mx-2">
           <div>

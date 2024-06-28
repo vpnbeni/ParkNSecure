@@ -22,7 +22,9 @@ const HeroSection = () => {
         ].map((item, index) => {
           return (
             <div
-              className={`text-base mx-0.5 my-0 h-full translate-y-0.5 p-2 cursor-pointer border-b-4 border-transparent hover:border-white ${index === 5 && "hidden lg:block"}  ${index === 4 && "hidden lg:block"}`}
+              className={`text-base mx-0.5 my-0 h-full translate-y-0.5 p-2 cursor-pointer border-b-4 border-transparent hover:border-white ${
+                index === 5 && "hidden lg:block"
+              }  ${index === 4 && "hidden lg:block"}`}
               key={index}
             >
               {item}
@@ -31,9 +33,8 @@ const HeroSection = () => {
         })}
       </div>
       <div className="flex mt-4 pt-1 justify-center items-center ">
-        <div className="w-10/12 md:w-1/2 xl:w-[30vw]"> 
-        <SearchBar  />
-
+        <div className="w-10/12 md:w-1/2 xl:w-[30vw]">
+          <SearchBar width={` `}/>
         </div>
       </div>
       <div className="mb-0 mt-10 md:mt-4 pt-[3px] flex justify-center items-center text-white ">
@@ -41,12 +42,12 @@ const HeroSection = () => {
         <span className="px-4 font-bold text-base">
           Get a digital portrait <br /> when you claim your home
         </span>
-        <button className="border-0 bg-red-600 text-white hover:bg-white hover:text-red-600 px-4 py-2 rounded-full text-xs md:text-base">
+        <button className=" w-[100px] border-0 bg-red-600 text-white hover:bg-white hover:text-red-600 md:px-4 py-1 mr-4 md:py-2 rounded-full text-xs md:text-base">
           Claim now
         </button>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default HeroSection
+export default HeroSection;

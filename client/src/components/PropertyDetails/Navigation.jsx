@@ -15,7 +15,7 @@ const Navigation = () => {
   ];
   var size = Object.keys(myObj).length;
   return (
-    <div className="flex items-center justify-between mx-64">
+    <div className="flex items-center justify-around 2xl:justify-center w-full px-3 md:mx-0">
       <Link
         to={"/search"}
         className="flex underline items-center justify-center"
@@ -24,9 +24,9 @@ const Navigation = () => {
         Back
       </Link>
       <div className="mx-4">
-        <SearchBar />
+        <SearchBar  width={`w-full`}/>
       </div>
-      <div className="flex text-sm ">
+      <div className="hidden 2xl:flex text-sm ">
         {myObj.map((item) => {
           return (
             <div className="flex items-center justify-center" key={item.id}>
@@ -47,7 +47,7 @@ const Navigation = () => {
           );
         })}
       </div>
-      <div className="flex ">
+      <div className="hidden md:flex ">
       <Link
         to={"/"}
         className="flex mx-1 items-center justify-center rounded-full p-3 border-2 border-black"

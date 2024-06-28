@@ -31,7 +31,7 @@ const SidebarMenu = () => {
             onClick={toggleSidebar}
           ></div>
 
-          <div className="fixed inset-y-0 left-0 w-2/5 bg-white p-4 z-50 shadow-lg transform transition-transform duration-300">
+          <div className="fixed inset-y-0 left-0 w-4/5 bg-white p-4 z-50 shadow-lg transform transition-transform duration-300">
             <button
               className="p-2 bg-red-500 text-white absolute top-4 right-4"
               onClick={toggleSidebar}

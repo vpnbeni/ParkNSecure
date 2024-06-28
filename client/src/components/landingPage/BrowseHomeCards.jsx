@@ -24,12 +24,12 @@ const BrowseHomeCards = () => {
       <div className="text-lg text-center lg:text-start pl-0 lg:pl-4 xl:text-2xl font-semibold">
         Browse homes in Los Angeles, CA
       </div>
-      <div className="grid xl:grid-cols-4 grid-cols-2 lg:grid-cols-3 gap-4 p-4">
+      <div className="flex flex-row overflow-x-auto lg:space-x-0 space-x-4  xl:grid xl:grid-cols-4  lg:grid-cols-3 gap-4 p-4">
         {data.map((item, index) => {
           return (
             <div
               key={index}
-              className="card flex justify-between items-start h-[200px]  rounded-lg bg-cover  p-4"
+              className="card flex justify-between items-start h-[200px]  rounded-lg bg-cover  w-[270px] md:w-auto  p-4 flex-shrink-0  "
               style={{ backgroundImage: `url(${item.image})` }}
             >
               <div className="text-white text-lg font-bold">{item.name}</div>
