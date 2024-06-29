@@ -42,7 +42,7 @@ const HeroSection = () => {
         <span className="px-4 font-bold text-base">
           Get a digital portrait <br /> when you claim your home
         </span>
-        <button className=" w-[100px] border-0 bg-red-600 text-white hover:bg-white hover:text-red-600 md:px-4 py-1 mr-4 md:py-2 rounded-full text-xs md:text-base">
+        <button className=" w-[100px] md:w-[170px] border-0 bg-red-600 text-white hover:bg-white hover:text-red-600 md:px-4 py-1 mr-4 md:py-2 rounded-full text-xs md:text-base">
           Claim now
         </button>
       </div>

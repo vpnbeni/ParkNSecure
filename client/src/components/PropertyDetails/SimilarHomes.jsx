@@ -270,9 +270,9 @@ const SimilarHomes = () => {
                   <div className="mt-4 flex justify-between  p-4">
                     <div>
                       <h3 className="text-sm text-gray-700">
-                        <a
+                        <div
                           className="flex items-center justify-start"
-                          href={product.href}
+                       
                         >
                           <span
                             aria-hidden="true"
@@ -282,7 +282,7 @@ const SimilarHomes = () => {
                             className={`mr-2 text-${product.statusColor}-600`}
                           />
                           {product.status}
-                        </a>
+                        </div>
                       </h3>
                       <h1 className="text-2xl font-semibold my-2">
                         {product.price}
@@ -335,15 +335,15 @@ const SimilarHomes = () => {
                     <img
                       src={product.imageSrc}
                       alt={product.imageAlt}
-                      className="h-full w-full object-cover object-center lg:h-full lg:w-full"
+                      className="h-[full] w-full object-cover object-center lg:h-full lg:w-full"
                     />
                   </div>
                   <div className="mt-4 flex justify-between  p-4">
                     <div>
                       <h3 className="text-sm text-gray-700">
-                        <a
+                        <div
                           className="flex items-center justify-start"
-                          href={product.href}
+                         
                         >
                           <span
                             aria-hidden="true"
@@ -353,7 +353,7 @@ const SimilarHomes = () => {
                             className={`mr-2 text-${product.statusColor}-600`}
                           />
                           {product.status}
-                        </a>
+                        </div>
                       </h3>
                       <h1 className="text-2xl font-semibold my-2">
                         {product.price}

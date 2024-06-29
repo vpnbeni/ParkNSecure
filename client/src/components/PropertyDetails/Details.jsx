@@ -44,16 +44,16 @@ const Details = () => {
               <div className=" flex flex-col justify-start  ">
                 <div>
                   <h3 className="text-base text-gray-700 mb-4">
-                    <a
+                    <div
                       className="flex items-center justify-start"
-                      href={product.href}
+                      
                     >
                       <span aria-hidden="true" className="absolute inset-0" />
                       <FaCircle
                         className={`mr-2 text-${product.statusColor}-600`}
                       />
                       {product.status}
-                    </a>
+                    </div>
                   </h3>
                   <h1 className="text-2xl font-semibold my-2">
                     {product.price}
@@ -77,7 +77,7 @@ const Details = () => {
                 {details.map((item) => {
                   return (
                     <div
-                      key={item}
+                      key={item.name}
                       className="flex items-center justify-center mx-4"
                     >
                       <div className="">{item.src}</div>

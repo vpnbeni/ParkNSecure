@@ -25,7 +25,7 @@ const ResultCard = () => {
       statusColor: "yellow",
     },
     {
-      id: 1,
+      id: 2,
       name: "Basic Tee",
       price: "$235,000",
       bed: "3",
@@ -41,7 +41,7 @@ const ResultCard = () => {
       statusColor: "yellow",
     },
     {
-      id: 1,
+      id: 3,
       name: "Basic Tee",
       price: "$235,000",
       bed: "3",
@@ -57,7 +57,7 @@ const ResultCard = () => {
       statusColor: "yellow",
     },
     {
-      id: 1,
+      id: 4,
       name: "Basic Tee",
       price: "$235,000",
       bed: "3",
@@ -73,7 +73,7 @@ const ResultCard = () => {
       statusColor: "yellow",
     },
     {
-      id: 1,
+      id: 5,
       name: "Basic Tee",
       price: "$235,000",
       bed: "3",
@@ -89,7 +89,7 @@ const ResultCard = () => {
       statusColor: "yellow",
     },
     {
-      id: 1,
+      id: 6,
       name: "Basic Tee",
       price: "$235,000",
       bed: "3",

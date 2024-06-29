@@ -12,7 +12,7 @@ const Accordion = () => {
     {
       title: "Property details",
       content: (
-        <div className="mx-4 w-11/12">
+        <div className="mx-4 w-full xl:w-11/12">
           This is the largest unit in this complex. Built and owned by the
           original developer, this unit comes with some extras, including a long
           balcony to sit and watch those amazing Buck Island views . The large
