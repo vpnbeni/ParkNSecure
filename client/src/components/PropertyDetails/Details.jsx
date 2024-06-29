@@ -1,5 +1,5 @@
 import { FaCircle } from "react-icons/fa";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 import img1 from "../../images/7491ee00d02b80e77dd963ba2823fc0el-m900943348od-w480_h360.jpg";
 import { GoHome } from "react-icons/go";
 import { IoCalendarClearOutline } from "react-icons/io5";
@@ -39,7 +39,7 @@ const Details = () => {
     <>
       <div className="xl:w-[652px] text-wrap mx-4">
         {products.map((product) => (
-          <Link to={"/propertyDetails"} key={product.id}>
+          <div  key={product.id}>
             <div className="group relative ">
               <div className=" flex flex-col justify-start  ">
                 <div>
@@ -77,7 +77,7 @@ const Details = () => {
                 {details.map((item) => {
                   return (
                     <div
-                      key={item}
+                      key={item.name}
                       className="flex items-center justify-center mx-4"
                     >
                       <div className="">{item.src}</div>
@@ -100,7 +100,7 @@ const Details = () => {
                 </div>
               </div>
             </div>
-          </Link>
+          </div>
         ))}
       </div>
     </>

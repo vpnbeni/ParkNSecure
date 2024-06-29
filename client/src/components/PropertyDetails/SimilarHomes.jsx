@@ -6,7 +6,6 @@ import img3 from "../../images/678ce73ed7fafdc65d32f5163a529ce1l-m3328558255rd-w
 import img4 from "../../images/4303ba0292e644c65c5638b860c896a4l-m2045889581rd-w960_h720.jpg";
 import img6 from "../../images/856f982e8c39f43add366d2c6ff40d1dl-m1299674549od-w480_h360.jpg";
 import img5 from "../../images/431be6ec19c70dd0ddd1b8f9af1822d2l-m2899277920rd-w960_h720.jpg";
-import { Link } from "react-router-dom";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 const responsive = {
@@ -45,7 +44,7 @@ const SimilarHomes = () => {
       statusColor: "yellow",
     },
     {
-      id: 1,
+      id: 2,
       name: "Basic Tee",
       price: "$235,000",
       bed: "3",
@@ -61,7 +60,7 @@ const SimilarHomes = () => {
       statusColor: "yellow",
     },
     {
-      id: 1,
+      id: 3,
       name: "Basic Tee",
       price: "$235,000",
       bed: "3",
@@ -77,7 +76,7 @@ const SimilarHomes = () => {
       statusColor: "yellow",
     },
     {
-      id: 1,
+      id: 4,
       name: "Basic Tee",
       price: "$235,000",
       bed: "3",
@@ -93,7 +92,7 @@ const SimilarHomes = () => {
       statusColor: "yellow",
     },
     {
-      id: 1,
+      id: 5,
       name: "Basic Tee",
       price: "$235,000",
       bed: "3",
@@ -109,7 +108,7 @@ const SimilarHomes = () => {
       statusColor: "yellow",
     },
     {
-      id: 1,
+      id: 6,
       name: "Basic Tee",
       price: "$235,000",
       bed: "3",
@@ -125,7 +124,7 @@ const SimilarHomes = () => {
       statusColor: "yellow",
     },
     {
-      id: 1,
+      id: 7,
       name: "Basic Tee",
       price: "$235,000",
       bed: "3",
@@ -141,7 +140,7 @@ const SimilarHomes = () => {
       statusColor: "yellow",
     },
     {
-      id: 1,
+      id: 8,
       name: "Basic Tee",
       price: "$235,000",
       bed: "3",
@@ -157,7 +156,7 @@ const SimilarHomes = () => {
       statusColor: "yellow",
     },
     {
-      id: 1,
+      id: 9,
       name: "Basic Tee",
       price: "$235,000",
       bed: "3",
@@ -173,7 +172,7 @@ const SimilarHomes = () => {
       statusColor: "yellow",
     },
     {
-      id: 1,
+      id: 10,
       name: "Basic Tee",
       price: "$235,000",
       bed: "3",
@@ -189,7 +188,7 @@ const SimilarHomes = () => {
       statusColor: "yellow",
     },
     {
-      id: 1,
+      id: 11,
       name: "Basic Tee",
       price: "$235,000",
       bed: "3",
@@ -205,7 +204,7 @@ const SimilarHomes = () => {
       statusColor: "yellow",
     },
     {
-      id: 1,
+      id: 12,
       name: "Basic Tee",
       price: "$235,000",
       bed: "3",
@@ -221,7 +220,7 @@ const SimilarHomes = () => {
       statusColor: "yellow",
     },
     {
-      id: 1,
+      id: 13,
       name: "Basic Tee",
       price: "$235,000",
       bed: "3",
@@ -258,7 +257,7 @@ const SimilarHomes = () => {
         >
           {products.map((product) => (
             <div className="mx-2 my-0" key={product.id}>
-              <Link to={"/propertyDetails"} className="slider w-[200px]">
+              <div className="slider w-[200px]">
                 <div className="group relative rounded-lg shadow-lg">
                   <div className="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-t-lg bg-gray-200 lg:aspect-none group-hover:opacity-75 lg:h-[173px]">
                     <img
@@ -307,7 +306,7 @@ const SimilarHomes = () => {
                     </div>
                   </div>
                 </div>
-              </Link>
+              </div>
             </div>
           ))}
         </Carousel>
@@ -329,7 +328,7 @@ const SimilarHomes = () => {
         >
           {products.map((product) => (
             <div className="mx-2 my-0" key={product.id}>
-              <Link to={"/propertyDetails"} className="slider w-[200px]">
+              <div className="slider w-[200px]">
                 <div className="group relative rounded-lg shadow-lg">
                   <div className="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-t-lg bg-gray-200 lg:aspect-none group-hover:opacity-75 lg:h-[173px]">
                     <img
@@ -378,7 +377,7 @@ const SimilarHomes = () => {
                     </div>
                   </div>
                 </div>
-              </Link>
+              </div>
             </div>
           ))}
         </Carousel>

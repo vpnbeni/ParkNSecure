@@ -35,10 +35,10 @@ const ContactForm = ({ rounded, border }) => {
           <textarea
             id="message"
             placeholder="how can an agent help?"
-            rows="4"
+            rows="4" defaultValue={` How can an agent help?`}
             className="mt-1 p-2 block w-full rounded-md border border-gray-600 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
           >
-            How can an agent help?
+           
           </textarea>
         </div>
         <div>

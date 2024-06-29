@@ -30,12 +30,12 @@ const ImageGallery = () => {
         <div className=" text-xs mx-1 md:mx-4">
         Listed by: <br className="hidden md:block"/> David R. Hall with Genesis Properties St. Croix
         </div>
-        <div className="container flex w-auto  xl:w-[642px] 2xl:w-[932px]">
+        <div className="container flex w-auto  lg:w-[742px] xl:w-[932px]">
           <div className="relative aspect-w-300 aspect-h-375 2xl:w-[725px] max-w-4xl mx-auto ">
             <img
               src={mainImage}
               alt="Main"
-              className=" md:rounded-l-xl w-auto h-[300px] "
+              className=" md:rounded-l-xl w-auto h-[300px] xl:h-[420px] "
             />
             <button
               className="absolute left-1 top-1/2 transform -translate-y-1/2 bg-gray-700 text-white px-3 py-1 rounded-full text-xl"

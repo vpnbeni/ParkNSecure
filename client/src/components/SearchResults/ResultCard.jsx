@@ -25,7 +25,7 @@ const ResultCard = () => {
       statusColor: "yellow",
     },
     {
-      id: 1,
+      id: 2,
       name: "Basic Tee",
       price: "$235,000",
       bed: "3",
@@ -41,7 +41,7 @@ const ResultCard = () => {
       statusColor: "yellow",
     },
     {
-      id: 1,
+      id: 3,
       name: "Basic Tee",
       price: "$235,000",
       bed: "3",
@@ -57,7 +57,7 @@ const ResultCard = () => {
       statusColor: "yellow",
     },
     {
-      id: 1,
+      id: 4,
       name: "Basic Tee",
       price: "$235,000",
       bed: "3",
@@ -73,7 +73,7 @@ const ResultCard = () => {
       statusColor: "yellow",
     },
     {
-      id: 1,
+      id: 5,
       name: "Basic Tee",
       price: "$235,000",
       bed: "3",
@@ -89,7 +89,7 @@ const ResultCard = () => {
       statusColor: "yellow",
     },
     {
-      id: 1,
+      id: 6,
       name: "Basic Tee",
       price: "$235,000",
       bed: "3",
@@ -178,3 +178,88 @@ const ResultCard = () => {
 };
 
 export default ResultCard;
+
+
+
+
+
+
+
+
+// import { FaCircle } from "react-icons/fa";
+// import { Link } from "react-router-dom";
+// import PropTypes from 'prop-types';
+// const ResultCard = ({ searchResults }) => {
+//   return (
+//     <div className="bg-white">
+//       <div className="px-4 py-16 sm:px-6 sm:py-24  lg:px-8">
+//         <h2 className="text-2xl font-bold tracking-tight text-gray-900">
+//           Virgin Islands of the United States Real Estate & Homes for Sale
+//         </h2>
+
+//         <div className="mt-6 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 xl:gap-x-8">
+//           {searchResults.map((result) => (
+//             <Link to={'/propertyDetails'} key={result.id}>
+//               <div className="text-xs">
+//                 Brokered by Genesis Properties St. Croix
+//               </div>
+//               <div className="group relative rounded-lg shadow-lg">
+//                 <div className="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-t-lg bg-gray-200 lg:aspect-none group-hover:opacity-75 lg:h-80">
+//                   <img
+//                     src={result.imageSrc}
+//                     alt={result.imageAlt}
+//                     className="h-full w-full object-cover object-center lg:h-full lg:w-full"
+//                   />
+//                 </div>
+//                 <div className="mt-4 flex justify-between  p-4">
+//                   <div>
+//                     <h3 className="text-sm text-gray-700">
+//                       <a
+//                         className="flex items-center justify-start"
+//                         href={result.href}
+//                       >
+//                         <span aria-hidden="true" className="absolute inset-0" />
+//                         <FaCircle
+//                           className={`mr-2 text-${result.statusColor}-600`}
+//                         />
+//                         {result.status}
+//                       </a>
+//                     </h3>
+//                     <h1 className="text-2xl font-semibold my-2">
+//                       {result.price}
+//                     </h1>
+//                     <div className="flex text-xs md:text-sm">
+//                       <p className="mt-1  text-gray-900 mr-2 ">
+//                         <span className="font-semibold">{result.bed}</span> bed
+//                       </p>
+//                       <p className="mt-1  text-gray-900 mx-2 ">
+//                         <span className="font-semibold">{result.bath}</span>{" "}
+//                         bed
+//                       </p>
+//                       <p className="mt-1  text-gray-900 ml-2 ">
+//                         <span className="font-semibold">{result.area}</span>{" "}
+//                         bed
+//                       </p>
+//                     </div>
+//                     <p className="mt-1  text-xs md:text-sm text-gray-900 2xl:w-2/3 ">
+//                       {result.address}
+//                     </p>
+//                   </div>
+//                   <div className="md:text-sm text-xs  flex items-end justify-end font-medium text-gray-900 w-1/2">
+//                     <div className="px-2 py-2 border border-black rounded-full">
+//                       {result.agent}
+//                     </div>
+//                   </div>
+//                 </div>
+//               </div>
+//             </Link>
+//           ))}
+//         </div>
+//       </div>
+//     </div>
+//   );
+// };
+// ResultCard.propTypes = {
+//   searchResults: PropTypes.arrayOf(PropTypes.object).isRequired,
+// };
+// export default ResultCard;

@@ -4,9 +4,12 @@ import Header from "./components/Header";
 import Footer from "./components/Footer";
 import SearchResults from "./components/SearchResults/SearchResults";
 import PropertyDetails from "./components/PropertyDetails/PropertyDetails";
+import ScrollToTop from "./components/ScrollToTop";
+
 const App = () => {
   return (
     <BrowserRouter>
+      <ScrollToTop />
       <Header />
       <Routes>
         <Route path="/" element={<Home />}></Route>
