@@ -19,7 +19,7 @@ const PropertyDetails = () => {
             <Accordion1 />
           </div>
           <div>
-            <div className="flex items-center justify-center md:justify-normal mb-4">
+            <div className="flex md:hidden items-center justify-center md:justify-normal mb-4">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
@@ -36,7 +36,7 @@ const PropertyDetails = () => {
               </svg>
               <span className="ml-2 text-gray-700">15 saves this week</span>
             </div>
-            <div className="w-[302px] m-auto">
+            <div className="block md:hidden xl:block w-[302px] m-auto">
               <EmailAgentForm
                 rounded="rounded-xl"
                 border="border border-black"
@@ -52,32 +52,36 @@ const PropertyDetails = () => {
       <div className=" flex flex-col items-center justify-center my-10">
         <SimilarHomes />
       </div>
-      <div className="flex felx-col items-center justify-start xl:px-96 py-10  bg-[#f2f0ef]">
+      <div className="flex  px-4 md:px-10  items-center justify-start  xl:px-96 py-10  bg-[#f2f0ef]">
         <div>
-        <div className="text-gray-800 text-sm my-4">
-          Additional Information About 324 Golden Rock Co, Christiansted, VI
-          00820
-          <div className="text-xs">
-            324 Golden Rock Co, Christiansted, VI 00820 is a condo for sale
-            listed on the market for 56 Days.
+          <div className="text-gray-800 text-sm my-4">
+            Additional Information About 324 Golden Rock Co, Christiansted, VI
+            00820
+            <div className="text-xs">
+              324 Golden Rock Co, Christiansted, VI 00820 is a condo for sale
+              listed on the market for 56 Days.
+            </div>
           </div>
-        </div>
-        <div className="flex">
-          <ul className="text-gray-500 text-sm w-1/2">
-            <li className="font-semibold text-black">Nearby Cities</li>
-            <li className="my-2">Saintcroix Homes for Sale</li>
-            <li className="my-2">Saint Thomas Homes for sale</li>
-            <li className="my-2">Charlotte Ama Homes for Sale</li>
-            <li className="underline flex justify-start items-center text-black">See more <FaChevronDown /></li>
-          </ul>
-          <ul className="text-gray-500 text-sm w-1/2">
-            <li className="font-semibold text-black">Nearby Cities</li>
-            <li className="my-2">Saintcroix Homes for Sale</li>
-            <li className="my-2">Saint Thomas Homes for sale</li>
-            <li className="my-2">Charlotte Ama Homes for Sale</li>
-            <li className="underline flex justify-start items-center text-black">See more <FaChevronDown /></li>
-          </ul>
-        </div>
+          <div className="flex">
+            <ul className="text-gray-500 text-sm w-1/2">
+              <li className="font-semibold text-black">Nearby Cities</li>
+              <li className="my-2">Saintcroix Homes for Sale</li>
+              <li className="my-2">Saint Thomas Homes for sale</li>
+              <li className="my-2">Charlotte Ama Homes for Sale</li>
+              <li className="underline flex justify-start items-center text-black">
+                See more <FaChevronDown />
+              </li>
+            </ul>
+            <ul className="text-gray-500 text-sm w-1/2">
+              <li className="font-semibold text-black">Nearby Cities</li>
+              <li className="my-2">Saintcroix Homes for Sale</li>
+              <li className="my-2">Saint Thomas Homes for sale</li>
+              <li className="my-2">Charlotte Ama Homes for Sale</li>
+              <li className="underline flex justify-start items-center text-black">
+                See more <FaChevronDown />
+              </li>
+            </ul>
+          </div>
         </div>
       </div>
     </>

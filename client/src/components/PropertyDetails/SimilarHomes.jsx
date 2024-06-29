@@ -241,7 +241,7 @@ const SimilarHomes = () => {
   ];
   return (
     <>
-      <div className="SimilarHomes w-full 2xl:w-[1250px]">
+      <div className="SimilarHomes   w-full 2xl:w-[1250px]">
         <div className="flex justify-start items-center ml-4 font-bold text-xl">
           <FaHome className="text-xl font-semibold mx-2 "/>
           Similar Homes

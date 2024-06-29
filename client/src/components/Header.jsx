@@ -85,7 +85,7 @@ const Header = () => {
       </div>
       <div
         className={`headerSm block lg:hidden w-full bg-white   scrollDiv ${
-          showDiv ? "fixed z-50" : ""
+          showDiv ? "fixed z-50 top-0" : ""
         }`}
       >
         <div>
@@ -95,7 +95,7 @@ const Header = () => {
           className={`logo flex items-center justify-center h-12 m-0 p-0 `}
         >
           {
-            showDiv ? <SearchBar width={`w-3/5`} /> : <img src={logo} alt="" />
+            showDiv ? <SearchBar width={`w-3/5`} /> : <Link to={'/'}><img  src={logo} alt="" /></Link>
           }
           
         </div>

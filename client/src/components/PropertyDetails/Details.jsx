@@ -73,7 +73,7 @@ const Details = () => {
                     {product.address}
                   </p>
                 </div>
-                <div className="xl:flex w-full my-4">
+                <div className="grid grid-cols-2 md:grid-cols-3 gap-2 xl:flex w-full my-4">
                 {details.map((item) => {
                   return (
                     <div

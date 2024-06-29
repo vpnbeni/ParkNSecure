@@ -2,7 +2,7 @@ import EmailAgentForm from "./EmailAgentForm";
 import bgImg from "../../images/house1/6139728c4527ef2fd71f091801cb04b2l-m122395192rd-w1280_h960.webp";
 const LearnMore = () => {
   return (
-    <div className="LearnMore md:block hidden lg:w-[944px]">
+    <div className="LearnMore md:px-10 md:block hidden lg:w-[944px]">
       <div className="text-xl text-center my-4">
         Learn more about 324 Golden Rock Co
       </div>
