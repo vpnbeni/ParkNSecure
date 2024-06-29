@@ -46,7 +46,7 @@ const Accordion = () => {
   ];
 
   return (
-    <div className="w-[932px]  mx-auto">
+    <div className="xl:w-[932px]  mx-auto">
       {items.map((item, index) => (
         <div key={index} className="border-b border-gray-200">
           <button

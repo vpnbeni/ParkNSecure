@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 const ContactForm = ({ rounded, border }) => {
   return (
-    <div className={`p-2 md:p-4 max-w-md  bg-white shadow-md ${rounded} ${border}`} >
+    <div className={` p-2 md:p-4 max-w-md  bg-white shadow-md ${rounded} ${border}`} >
       <h2 className="text-2xl font-semibold mb-4 text-[20px]">More about this property</h2>
       <form className="space-y-4">
         <div>

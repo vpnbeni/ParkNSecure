@@ -37,7 +37,7 @@ const Details = () => {
 
   return (
     <>
-      <div className="w-[652px] text-wrap">
+      <div className="xl:w-[652px] text-wrap mx-4">
         {products.map((product) => (
           <Link to={"/propertyDetails"} key={product.id}>
             <div className="group relative ">
@@ -73,7 +73,7 @@ const Details = () => {
                     {product.address}
                   </p>
                 </div>
-                <div className="flex w-full my-4">
+                <div className="xl:flex w-full my-4">
                 {details.map((item) => {
                   return (
                     <div

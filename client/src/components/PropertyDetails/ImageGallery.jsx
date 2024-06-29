@@ -26,16 +26,16 @@ const ImageGallery = () => {
 
   return (
     <>
-      <div className=" flex flex-col items-start justify-start mr-3">
-        <div className="text-xs mx-4">
-        Listed by: <br /> David R. Hall with Genesis Properties St. Croix
+      <div className=" flex flex-col items-start justify-start md:mr-3">
+        <div className=" text-xs mx-1 md:mx-4">
+        Listed by: <br className="hidden md:block"/> David R. Hall with Genesis Properties St. Croix
         </div>
-        <div className="container flex xl:w-[642px] 2xl:w-[932px]">
-          <div className="relative 2xl:w-[725px] max-w-4xl mx-auto rounded-l-lg">
+        <div className="container flex w-auto  xl:w-[642px] 2xl:w-[932px]">
+          <div className="relative aspect-w-300 aspect-h-375 2xl:w-[725px] max-w-4xl mx-auto md:rounded-l-lg">
             <img
               src={mainImage}
               alt="Main"
-              className=" rounded-l-xl"
+              className=" md:rounded-l-xl w-auto h-[300px] "
             />
             <button
               className="absolute left-1 top-1/2 transform -translate-y-1/2 bg-gray-700 text-white px-3 py-1 rounded-full text-xl"
@@ -74,7 +74,7 @@ const ImageGallery = () => {
               {currentIndex}/{images.length}
             </Link>
           </div>
-          <div className="grid grid-rows-3 gap-[2px] ml-1">
+          <div className="hidden md:grid grid-rows-3 gap-[2px] ml-1">
             {images.slice(2).map((image, index) => (
               <img
                 key={image.id}
@@ -92,7 +92,7 @@ const ImageGallery = () => {
             ))}
           </div>
         </div>
-        <div className="underline text-xs my-4">How much home can you afford?</div>
+        <div className="underline text-xs mx-2 my-4">How much home can you afford?</div>
       </div>
     </>
   );

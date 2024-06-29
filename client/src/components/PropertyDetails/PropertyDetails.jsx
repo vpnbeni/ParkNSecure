@@ -12,14 +12,14 @@ const PropertyDetails = () => {
     <>
       <div className="flex items-center flex-col my-6 ">
         <Navigation />
-        <div className="flex  mt-4">
+        <div className=" xl:flex  mt-4">
           <div className="py-4 md:flex  w-full flex-col">
             <ImageGallery />
             <Details />
             <Accordion1 />
           </div>
           <div>
-            <div className="flex items-center mb-4">
+            <div className="flex items-center justify-center md:justify-normal mb-4">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
@@ -36,7 +36,7 @@ const PropertyDetails = () => {
               </svg>
               <span className="ml-2 text-gray-700">15 saves this week</span>
             </div>
-            <div className="w-[302px]">
+            <div className="w-[302px] m-auto">
               <EmailAgentForm
                 rounded="rounded-xl"
                 border="border border-black"
@@ -52,7 +52,7 @@ const PropertyDetails = () => {
       <div className=" flex flex-col items-center justify-center my-10">
         <SimilarHomes />
       </div>
-      <div className="flex felx-col items-center justify-start px-96 py-10  bg-[#f2f0ef]">
+      <div className="flex felx-col items-center justify-start xl:px-96 py-10  bg-[#f2f0ef]">
         <div>
         <div className="text-gray-800 text-sm my-4">
           Additional Information About 324 Golden Rock Co, Christiansted, VI
