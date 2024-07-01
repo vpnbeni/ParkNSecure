@@ -1,17 +1,72 @@
-import  { useState } from 'react';
-import axios from 'axios'
+import { useState, useEffect } from "react";
+import { useDispatch } from "react-redux";
+import {
+  fetchFilteredProperties,
+  fetchProperties,
+} from "../../redux/propertiesSlice";
 
 const PriceFilter = () => {
-  const [minPrice, setMinPrice] = useState('Any price');
-  const [maxPrice, setMaxPrice] = useState('Any price');
+  const [minPrice, setMinPrice] = useState("Any price");
+  const [maxPrice, setMaxPrice] = useState("Any price");
   const [isOpen, setIsOpen] = useState(false);
+  const dispatch = useDispatch();
 
-  const minPriceOptions = ['Any price', '$120k', '$250k', '$350k', '$450k', '$600k', '$700k', '$800k'];
-  const maxPriceOptions = ['Any price', '$200k', '$400k', '$600k', '$800k', '$1M', '$1.2M', '$1.4M'];
+  const minPriceOptions = [
+    "Any price",
+    "$120k",
+    "$250k",
+    "$350k",
+    "$450k",
+    "$600k",
+    "$700k",
+    "$800k",
+  ];
+  const maxPriceOptions = [
+    "Any price",
+    "$200k",
+    "$400k",
+    "$600k",
+    "$800k",
+    "$1M",
+    "$2M",
+    "$3M",
+  ];
+
+  const convertPrice = (price) => {
+    if (price.includes("k")) {
+      return price.replace("k", "000").replace("$", "");
+    } else if (price.includes("M")) {
+      return price.replace("M", "000000").replace("$", "");
+    } else if (price.includes(".")) {
+      console.log(
+        price.replace(".", "").replace("M", "000000").replace("$", "")
+      );
+      return price.replace(".", "").replace("M", "000000").replace("$", "");
+    }
+    return price.replace("$", "");
+  };
+
+  useEffect(() => {
+    const minPriceValue =
+      minPrice === "Any price" ? "" : convertPrice(minPrice);
+    const maxPriceValue =
+      maxPrice === "Any price" ? "" : convertPrice(maxPrice);
+
+    if (minPriceValue === "" && maxPriceValue === "") {
+      dispatch(fetchProperties());
+    } else {
+      dispatch(
+        fetchFilteredProperties({
+          minPrice: minPriceValue,
+          maxPrice: maxPriceValue,
+        })
+      );
+    }
+  }, [minPrice, maxPrice, dispatch]);
 
   const handleMinPriceChange = (price) => {
     setMinPrice(price);
-    if (price !== 'Any price') {
+    if (price !== "Any price") {
       setIsOpen(true);
     }
   };
@@ -19,37 +74,25 @@ const PriceFilter = () => {
   const handleMaxPriceChange = (price) => {
     setMaxPrice(price);
     setIsOpen(false);
-    fetchFilteredData(price, minPrice);
-  };
-
-  const fetchFilteredData = async (max, min) => {
-    const minPriceValue = min === 'Any price' ? '' : min.replace(/[^0-9]/g, '');
-    const maxPriceValue = max === 'Any price' ? '' : max.replace(/[^0-9]/g, '');
-
-    try {
-      const response = await axios.get(`http://192.168.1.77:4000/api/properties/filter?maxPrice=${maxPriceValue}&minPrice=${minPriceValue}`);
-      console.log(response.data);
-    } catch (error) {
-      console.error('Error fetching data:', error);
-    }
   };
 
   const clearFilter = () => {
-    setMinPrice('Any price');
-    setMaxPrice('Any price');
+    setMinPrice("Any price");
+    setMaxPrice("Any price");
     setIsOpen(false);
+    dispatch(fetchProperties());
   };
 
   return (
     <div className="relative">
       <button
-        className="border px-4 py-2 rounded font-semibold"
+        className="border px-4 py-2 rounded"
         onClick={() => setIsOpen(!isOpen)}
       >
-        {minPrice !== 'Any price' || maxPrice !== 'Any price'
+        {minPrice !== "Any price" || maxPrice !== "Any price"
           ? `${minPrice} to ${maxPrice} `
-          : 'Price'}
-        {(minPrice !== 'Any price' || maxPrice !== 'Any price') && (
+          : "Price"}
+        {(minPrice !== "Any price" || maxPrice !== "Any price") && (
           <span
             className="ml-2 text-red-500 cursor-pointer"
             onClick={clearFilter}
@@ -59,9 +102,9 @@ const PriceFilter = () => {
         )}
       </button>
       {isOpen && (
-        <div className="absolute bg-white border mt-2 rounded shadow-lg flex ">
+        <div className="absolute bg-white border mt-2 rounded shadow-lg">
           <div className="p-2">
-            <div className="block text-gray-700 w-[100px]">Min Price</div>
+            <span className="block text-gray-700">Min Price</span>
             <select
               value={minPrice}
               onChange={(e) => handleMinPriceChange(e.target.value)}
@@ -75,7 +118,7 @@ const PriceFilter = () => {
             </select>
           </div>
           <div className="p-2">
-            <span className="block text-gray-700 w-[100px]">Max Price</span>
+            <span className="block text-gray-700">Max Price</span>
             <select
               value={maxPrice}
               onChange={(e) => handleMaxPriceChange(e.target.value)}

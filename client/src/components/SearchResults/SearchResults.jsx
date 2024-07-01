@@ -1,9 +1,13 @@
+import { useEffect } from 'react'
 import GetPreApproved from './GetPreApproved'
 import ResultCard from './ResultCard'
 import SortMenu from './SortMenu'
-
+import store from '../../redux/store';
+import { fetchProperties } from '../../redux/propertiesSlice';
 const SearchResults = () => {
-  
+  useEffect(() => {
+    store.dispatch(fetchProperties());
+  }, []);
   return (
     <div>
       <SortMenu/>
@@ -16,4 +20,4 @@ const SearchResults = () => {
   )
 }
 
-export default SearchResults
+export default SearchResults;

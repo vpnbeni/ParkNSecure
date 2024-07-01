@@ -1,4 +1,3 @@
-// src/redux/propertiesSlice.js
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 
 export const fetchProperties = createAsyncThunk(
@@ -6,7 +5,22 @@ export const fetchProperties = createAsyncThunk(
   async () => {
     const response = await fetch('http://192.168.1.77:4000/api/properties/all');
     const data = await response.json();
-    console.log(data)
+    return data;
+  }
+);
+
+export const fetchFilteredProperties = createAsyncThunk(
+  'properties/fetchFilteredProperties',
+  async ({ minPrice, maxPrice }) => {
+    let url = 'http://192.168.1.77:4000/api/properties/filter?';
+    if (minPrice) {
+      url += `minPrice=${minPrice}&`;
+    }
+    if (maxPrice) {
+      url += `maxPrice=${maxPrice}&`;
+    }
+    const response = await fetch(url);
+    const data = await response.json();
     return data;
   }
 );
@@ -29,6 +43,17 @@ const propertiesSlice = createSlice({
         state.properties = action.payload;
       })
       .addCase(fetchProperties.rejected, (state, action) => {
+        state.status = 'failed';
+        state.error = action.error.message;
+      })
+      .addCase(fetchFilteredProperties.pending, (state) => {
+        state.status = 'loading';
+      })
+      .addCase(fetchFilteredProperties.fulfilled, (state, action) => {
+        state.status = 'succeeded';
+        state.properties = action.payload;
+      })
+      .addCase(fetchFilteredProperties.rejected, (state, action) => {
         state.status = 'failed';
         state.error = action.error.message;
       });

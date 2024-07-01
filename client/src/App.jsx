@@ -4,7 +4,6 @@ import Header from "./components/Header";
 import Footer from "./components/Footer";
 import SearchResults from "./components/SearchResults/SearchResults";
 import PropertyDetails from "./components/PropertyDetails/PropertyDetails";
-import PropertiesList from "./components/PropertiesList";
 const App = () => {
   return (
     <BrowserRouter>
@@ -13,7 +12,6 @@ const App = () => {
         <Route path="/" element={<Home />}></Route>
         <Route path="/search" element={<SearchResults />}></Route>
         <Route path="/propertyDetails" element={<PropertyDetails />}></Route>
-        <Route path="/properties" element={<PropertiesList />} />
       </Routes>
       <Footer />
     </BrowserRouter>
