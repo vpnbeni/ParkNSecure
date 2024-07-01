@@ -2,7 +2,7 @@ import { useState } from "react";
 
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
-import logo from "../images/logo-brand.png";
+import logo from "../images/logo.svg";
 import SidebarMenu from "./SideBar";
 import SignupModel from "./SignupLogin/Signup";
 import { BsPersonCircle } from "react-icons/bs";
@@ -59,14 +59,7 @@ const Header = () => {
             );
           })}
         </div>
-        <div className="links2 mx-14 hidden xl:block">
-          <Link className="cursor-pointer underline mr-4" to={"/"}>
-            Manage rentals{" "}
-          </Link>
-          <Link className="underline" to={"/"}>
-            Advertise{" "}
-          </Link>
-        </div>
+        
         <div className="loginSignup flex items-center justify-center xl:mx-6">
           <div className="login mx-2">
             <button className="border-0" onClick={openModal}>

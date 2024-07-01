@@ -23,7 +23,7 @@ const ResultCard = () => {
 
         <div className="mt-6 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 xl:gap-x-8">
           {properties.map((product) => (
-            <Link to={"/propertyDetails"} key={product.id}>
+            <Link to={"/propertyDetails"} key={product._id}>
               <div className="text-xs">
                 Brokered by Genesis Properties St. Croix
               </div>
@@ -33,23 +33,23 @@ const ResultCard = () => {
                     src={`http://192.168.1.77:4000/Images/${product.images[0]
                       .split("public\\Images\\")
                       .join("")}`}
-                    alt={product.imageAlt}
+                    alt={product.image}
                     className="h-full w-full object-cover object-center lg:h-full lg:w-full"
                   />
                 </div>
                 <div className="mt-4 flex justify-between  p-4">
                   <div>
                     <h3 className="text-sm text-gray-700">
-                      <a
+                      <div
                         className="flex items-center justify-start"
-                        href={product.href}
+                       
                       >
                         <span aria-hidden="true" className="absolute inset-0" />
                         <FaCircle
-                          className={`mr-2 text-${product.statusColor}-600`}
+                          className={`mr-2 text-green-600`}
                         />
                         {product.status}
-                      </a>
+                      </div>
                     </h3>
                     <h1 className="text-2xl font-semibold my-2">
                       {product.price}
@@ -73,7 +73,7 @@ const ResultCard = () => {
                   </div>
                   <div className="md:text-sm text-xs  flex items-end justify-end font-medium text-gray-900 w-1/2">
                     <div className="px-2 py-2 border border-black rounded-full">
-                      {product.agent}
+                      Email Agent
                     </div>
                   </div>
                 </div>

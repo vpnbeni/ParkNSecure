@@ -1,7 +1,7 @@
 // src/components/SearchBar.js
-    import { useDispatch } from 'react-redux';
-    import { fetchProperties } from './propertiesSlice';
-    import { useNavigate } from 'react-router-dom';
+import { useDispatch } from "react-redux";
+import { fetchProperties } from "../redux/propertiesSlice";
+import { useNavigate } from "react-router-dom";
 
 const SearchBar = () => {
   const dispatch = useDispatch();
@@ -9,7 +9,7 @@ const SearchBar = () => {
 
   const handleSearch = () => {
     dispatch(fetchProperties());
-    navigate('/propertyDetails'); // Redirect to properties page
+    navigate("/propertyDetails"); // Redirect to properties page
   };
 
   return (

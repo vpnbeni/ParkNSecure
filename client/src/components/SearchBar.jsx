@@ -1,18 +1,20 @@
 // import { Link } from "react-router-dom";
-import PropTypes from 'prop-types';
-import { useDispatch } from 'react-redux';
-import { fetchProperties } from './propertiesSlice';
-import { useNavigate } from 'react-router-dom';
-const SearchBar = ({width}) => {
+import PropTypes from "prop-types";
+import { useDispatch } from "react-redux";
+import { fetchProperties } from "../redux/propertiesSlice";
+import { useNavigate } from "react-router-dom";
+const SearchBar = ({ width }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const handleSearch = () => {
     dispatch(fetchProperties());
-    navigate('/search'); // Redirect to properties page
+    navigate("/search"); // Redirect to properties page
   };
   return (
-    <div className={`flex relative  text-sm lg:text-base  items-center bg-white  border-2 border-gray-300 rounded-full px-4 py-2 lg:py-2 shadow-md ${width}`}>
+    <div
+      className={`flex relative  text-sm lg:text-base  items-center bg-white  border-2 border-gray-300 rounded-full px-4 py-2 lg:py-2 shadow-md ${width}`}
+    >
       <input
         type="text"
         placeholder="Commonwealth of the Northern Mariana Islands"
@@ -38,12 +40,10 @@ const SearchBar = ({width}) => {
           />
         </svg>
       </button>
-      
     </div>
   );
 };
 SearchBar.propTypes = {
   width: PropTypes.string.isRequired,
-  
 };
 export default SearchBar;
