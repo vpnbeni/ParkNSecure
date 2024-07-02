@@ -6,14 +6,15 @@ export const fetchProperties = createAsyncThunk(
   async () => {
     const response = await fetch(`http://192.168.1.77:4000/api/properties/all`);
     const data = await response.json();
-    return data;
+    console.log(data.properties,"from thunk")
+    return data.properties;
   }
 );
 
 export const fetchFilteredProperties = createAsyncThunk(
   'properties/fetchFilteredProperties',
   async ({ minPrice, maxPrice, propertyTypes, minBedrooms, maxBedrooms, minBathrooms, maxBathrooms }) => {
-    let url = `http://192.168.1.77:4000/api/properties/filter?`;
+    let url = `http://192.168.1.77:4000/api/properties/all?`;
     if (minPrice) {
       url += `minPrice=${minPrice}&`;
     }
@@ -39,7 +40,7 @@ export const fetchFilteredProperties = createAsyncThunk(
     }
     const response = await fetch(url);
     const data = await response.json();
-    return data;
+    return data.properties;
   }
 );
 

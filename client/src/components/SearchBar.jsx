@@ -18,7 +18,7 @@ const SearchBar = ({ width }) => {
       <input
         type="text"
         placeholder="Commonwealth of the Northern Mariana Islands"
-        className="bg-transparent flex-grow outline-none overflow-hidden whitespace-nowrap text-ellipsis"
+        className="pr-8 bg-transparent flex-grow outline-none overflow-hidden whitespace-nowrap text-ellipsis"
       />
 
       <button

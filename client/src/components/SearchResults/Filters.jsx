@@ -12,6 +12,7 @@ import { FaHome } from "react-icons/fa";
 import { BiBuildings } from "react-icons/bi";
 import { CgHome } from "react-icons/cg";
 import { BsBuildingAdd } from "react-icons/bs";
+import { IoMdClose } from "react-icons/io";
 const Filter = () => {
   const [minPrice, setMinPrice] = useState("Any price");
   const [maxPrice, setMaxPrice] = useState("Any price");
@@ -26,7 +27,7 @@ const Filter = () => {
   const [priceFilterText, setPriceFilterText] = useState("Price");
   const [typeFilterText, setTypeFilterText] = useState("Property Type");
   const [roomsFilterText, setRoomsFilterText] = useState("Rooms");
-  
+
   const dispatch = useDispatch();
 
   const priceDropdownRef = useRef(null);
@@ -57,10 +58,13 @@ const Filter = () => {
     { type: "house", logo: <FaHome className="text-xl mx-auto" /> },
     { type: "condo", logo: <BiBuildings className="text-xl mx-auto" /> },
     { type: "townhome", logo: <CgHome className="text-xl mx-auto" /> },
-    { type: "multifamily", logo: < GiFamilyHouse className="text-xl mx-auto"/> },
+    {
+      type: "multifamily",
+      logo: <GiFamilyHouse className="text-xl mx-auto" />,
+    },
     { type: "mobile", logo: <RiHome6Line className="text-xl mx-auto" /> },
     { type: "farm", logo: <BsBuildingAdd className="text-xl mx-auto" /> },
-    { type: "land", logo: < GiIsland className="text-xl mx-auto"/> },
+    { type: "land", logo: <GiIsland className="text-xl mx-auto" /> },
   ];
   const minBedroomsOptions = ["No min", "studio", 1, 2, 3, 4, 5];
   const maxBedroomsOptions = ["No max", "studio", 1, 2, 3, 4, 5];
@@ -207,9 +211,9 @@ const Filter = () => {
 
   return (
     <div className="w-full flex flex-col items-center justify-center py-2">
-      <div className="flex w-full px-2 py-2 gap-1 justify-start">
+      <div className="hidden md:flex w-full px-2 py-2 gap-1 justify-start items-center">
         {/* Price Filter */}
-        <div className="relative">
+        <div className="relative ">
           <button
             onClick={() => setPriceDropdownOpen(!priceDropdownOpen)}
             className="pl-4 py-2 text-gray-700 rounded border border-black flex justify-center items-center"
@@ -218,7 +222,7 @@ const Filter = () => {
           </button>
           {priceDropdownOpen && (
             <div
-              className="absolute z-10 mt-2 w-48 bg-white border rounded shadow-lg"
+              className="flex absolute z-10 mt-2 bg-white border rounded shadow-lg w-[300px]"
               ref={priceDropdownRef}
             >
               <div className="px-4 py-3">
@@ -254,7 +258,7 @@ const Filter = () => {
                 </select>
                 <button
                   onClick={() => setPriceDropdownOpen(false)}
-                  className="mt-2 px-4 py-2 bg-blue-500 text-white rounded"
+                  className="mt-2 px-4 py-2 bg-blue-500 text-white rounded-xl"
                 >
                   Done
                 </button>
@@ -264,7 +268,7 @@ const Filter = () => {
         </div>
 
         {/* Property Type Filter */}
-        <div className="relative">
+        <div className="relative ">
           <button
             onClick={() => setTypeDropdownOpen(!typeDropdownOpen)}
             className="pl-4 py-2 text-gray-700 rounded border border-black flex justify-center items-center"
@@ -290,15 +294,14 @@ const Filter = () => {
                   <button
                     key={type.type}
                     onClick={() => handleTypeChange(type.type)}
-                    className={`text-sm px-2 py-3 rounded-xl  ${
+                    className={`text-sm px-2 py-3 rounded-xl border-black border  ${
                       selectedTypes.includes(type.type)
                         ? "bg-black text-white"
-                        : "bg-gray-100 text-gray-700"
+                        : " text:black"
                     }`}
                   >
                     {type.logo}
                     {type.type}
-
                   </button>
                 ))}
               </div>
@@ -307,7 +310,7 @@ const Filter = () => {
         </div>
 
         {/* Rooms Filter */}
-        <div className="relative">
+        <div className="relative ">
           <button
             onClick={() => setRoomsDropdownOpen(!roomsDropdownOpen)}
             className="pl-4 py-2 text-gray-700 rounded border border-black flex justify-center items-center"
@@ -392,15 +395,20 @@ const Filter = () => {
             </div>
           )}
         </div>
+        {/* Clear Filters Button */}
+        <button
+          onClick={clearFilter}
+          className="md:block hidden mx-3 px-4 py-2 bg-red-500 text-white rounded"
+        >
+          Clear Filters
+        </button>
+        <button
+          onClick={clearFilter}
+          className="block md:hidden mx-3 px-2 py-2 bg-red-500 text-white rounded-full"
+        >
+          <IoMdClose />
+        </button>
       </div>
-
-      {/* Clear Filters Button */}
-      <button
-        onClick={clearFilter}
-        className="mt-2 px-4 py-2 bg-red-500 text-white rounded"
-      >
-        Clear Filters
-      </button>
     </div>
   );
 };

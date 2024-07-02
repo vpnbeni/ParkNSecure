@@ -88,7 +88,7 @@ const Header = () => {
           className={`logo flex items-center justify-center h-12 m-0 p-0 `}
         >
           {
-            showDiv ? <SearchBar width={`w-3/5`} /> : <Link to={'/'}><img  src={logo} alt="" /></Link>
+            showDiv ? <SearchBar width={`w-3/5`} /> : <Link className="flex justify-center items-center" to={'/'}><img className="w-1/2 "  src={logo} alt="" /></Link>
           }
           
         </div>

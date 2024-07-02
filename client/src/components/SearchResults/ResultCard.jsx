@@ -5,7 +5,10 @@ import { Link } from "react-router-dom";
 const ResultCard = () => {
   const { properties, status, error } = useSelector(
     (state) => state.properties
+
   );
+
+  console.log(properties ,'from card')
   if (status === "loading") {
     return <div>Loading...</div>;
   }
@@ -13,6 +16,7 @@ const ResultCard = () => {
   if (status === "failed") {
     return <div>Error: {error}</div>;
   }
+
   return (
     <div className="bg-white">
       <div className="px-4 py-16 sm:px-6 sm:py-24 lg:px-8">
@@ -22,7 +26,10 @@ const ResultCard = () => {
 
         <div className="mt-6 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 xl:gap-x-8">
           {properties.map((product) => (
-            <Link to={"/propertyDetails"} key={product._id}>
+            <Link 
+              to={`/propertyDetails/${product._id}`} 
+              key={product._id}
+            >
               <div className="text-xs">
                 Brokered by Genesis Properties St. Croix
               </div>
