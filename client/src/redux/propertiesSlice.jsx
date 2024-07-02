@@ -1,3 +1,4 @@
+
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 
 export const fetchProperties = createAsyncThunk(
@@ -11,7 +12,7 @@ export const fetchProperties = createAsyncThunk(
 
 export const fetchFilteredProperties = createAsyncThunk(
   'properties/fetchFilteredProperties',
-  async ({ minPrice, maxPrice, propertyTypes }) => {
+  async ({ minPrice, maxPrice, propertyTypes, minBedrooms, maxBedrooms, minBathrooms, maxBathrooms }) => {
     let url = `http://192.168.1.77:4000/api/properties/filter?`;
     if (minPrice) {
       url += `minPrice=${minPrice}&`;
@@ -20,11 +21,21 @@ export const fetchFilteredProperties = createAsyncThunk(
       url += `maxPrice=${maxPrice}&`;
     }
     if (propertyTypes && propertyTypes.length > 0) {
-      
-     propertyTypes.map((item)=>{
-      console.log(item)
-      return url += `propertyType=${item}&`;
-     })
+      propertyTypes.map((item) => {
+        return (url += `propertyType=${item}&`);
+      });
+    }
+    if (minBedrooms) {
+      url += `minBedrooms=${minBedrooms}&`;
+    }
+    if (maxBedrooms) {
+      url += `maxBedrooms=${maxBedrooms}&`;
+    }
+    if (minBathrooms) {
+      url += `minBathrooms=${minBathrooms}&`;
+    }
+    if (maxBathrooms) {
+      url += `maxBathrooms=${maxBathrooms}&`;
     }
     const response = await fetch(url);
     const data = await response.json();
