@@ -1,7 +1,7 @@
 import { Menu, MenuButton, MenuItem, MenuItems } from "@headlessui/react";
 import { ChevronDownIcon } from "@heroicons/react/20/solid";
 import SearchBar from "../SearchBar";
-import SortPrice from "./SortPrice";
+import Filter from './Filters';
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
@@ -88,7 +88,7 @@ export default function SortMenu() {
             </div>
           </MenuItems>
         </Menu> 
-        <SortPrice/>
+        <Filter/>
 
         {/* <Menu as="div" className="relative hidden md:inline-block text-left mx-2">
           <div>

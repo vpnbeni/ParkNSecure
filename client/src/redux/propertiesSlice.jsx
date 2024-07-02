@@ -3,7 +3,7 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 export const fetchProperties = createAsyncThunk(
   'properties/fetchProperties',
   async () => {
-    const response = await fetch('http://192.168.1.77:4000/api/properties/all');
+    const response = await fetch(`http://192.168.1.77:4000/api/properties/all`);
     const data = await response.json();
     return data;
   }
@@ -11,13 +11,20 @@ export const fetchProperties = createAsyncThunk(
 
 export const fetchFilteredProperties = createAsyncThunk(
   'properties/fetchFilteredProperties',
-  async ({ minPrice, maxPrice }) => {
-    let url = 'http://192.168.1.77:4000/api/properties/filter?';
+  async ({ minPrice, maxPrice, propertyTypes }) => {
+    let url = `http://192.168.1.77:4000/api/properties/filter?`;
     if (minPrice) {
       url += `minPrice=${minPrice}&`;
     }
     if (maxPrice) {
       url += `maxPrice=${maxPrice}&`;
+    }
+    if (propertyTypes && propertyTypes.length > 0) {
+      
+     propertyTypes.map((item)=>{
+      console.log(item)
+      return url += `propertyType=${item}&`;
+     })
     }
     const response = await fetch(url);
     const data = await response.json();
