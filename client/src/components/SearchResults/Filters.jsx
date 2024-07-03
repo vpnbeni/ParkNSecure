@@ -1,4 +1,6 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useRef } from "react";
+import { Menu, MenuButton, MenuItem, MenuItems } from "@headlessui/react";
+
 import { useDispatch } from "react-redux";
 import { RiHome6Line } from "react-icons/ri";
 import { GiIsland } from "react-icons/gi";
@@ -13,6 +15,10 @@ import { BiBuildings } from "react-icons/bi";
 import { CgHome } from "react-icons/cg";
 import { BsBuildingAdd } from "react-icons/bs";
 import { IoMdClose } from "react-icons/io";
+
+function classNames(...classes) {
+  return classes.filter(Boolean).join(" ");
+}
 const Filter = () => {
   const [minPrice, setMinPrice] = useState("Any price");
   const [maxPrice, setMaxPrice] = useState("Any price");
@@ -82,63 +88,6 @@ const Filter = () => {
     return price.replace("$", "");
   };
 
-  useEffect(() => {
-    const minPriceValue =
-      minPrice === "Any price" ? "" : convertPrice(minPrice);
-    const maxPriceValue =
-      maxPrice === "Any price" ? "" : convertPrice(maxPrice);
-
-    dispatch(
-      fetchFilteredProperties({
-        minPrice: minPriceValue,
-        maxPrice: maxPriceValue,
-        propertyTypes: selectedTypes,
-        minBedrooms: minBedrooms === "No min" ? "" : minBedrooms,
-        maxBedrooms: maxBedrooms === "No max" ? "" : maxBedrooms,
-        minBathrooms: minBathrooms === "No min" ? "" : minBathrooms,
-        maxBathrooms: maxBathrooms === "No max" ? "" : maxBathrooms,
-      })
-    );
-  }, [
-    minPrice,
-    maxPrice,
-    selectedTypes,
-    minBedrooms,
-    maxBedrooms,
-    minBathrooms,
-    maxBathrooms,
-    dispatch,
-  ]);
-
-  useEffect(() => {
-    const handleClickOutside = (event) => {
-      if (
-        priceDropdownRef.current &&
-        !priceDropdownRef.current.contains(event.target)
-      ) {
-        setPriceDropdownOpen(false);
-      }
-      if (
-        typeDropdownRef.current &&
-        !typeDropdownRef.current.contains(event.target)
-      ) {
-        setTypeDropdownOpen(false);
-      }
-      if (
-        roomsDropdownRef.current &&
-        !roomsDropdownRef.current.contains(event.target)
-      ) {
-        setRoomsDropdownOpen(false);
-      }
-    };
-
-    document.addEventListener("mousedown", handleClickOutside);
-
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
-    };
-  }, []);
-
   const handleMinPriceChange = (price) => {
     setMinPrice(price);
     if (price !== "Any price") {
@@ -148,7 +97,6 @@ const Filter = () => {
 
   const handleMaxPriceChange = (price) => {
     setMaxPrice(price);
-    setPriceDropdownOpen(false);
   };
 
   const handleTypeChange = (type) => {
@@ -168,7 +116,6 @@ const Filter = () => {
 
   const handleMaxBedroomsChange = (bedrooms) => {
     setMaxBedrooms(bedrooms);
-    setRoomsDropdownOpen(false);
   };
 
   const handleMinBathroomsChange = (bathrooms) => {
@@ -180,16 +127,45 @@ const Filter = () => {
 
   const handleMaxBathroomsChange = (bathrooms) => {
     setMaxBathrooms(bathrooms);
-    setRoomsDropdownOpen(false);
   };
 
-  const handleDoneClick = () => {
+  const handleDonePriceClick = () => {
+    setPriceFilterText(`${minPrice} - ${maxPrice}`);
+    setPriceDropdownOpen(false);
+    dispatchFetchFilteredProperties();
+  };
+
+  const handleDoneTypeClick = () => {
     setTypeFilterText(`Property Type (${selectedTypes.length})`);
+    setTypeDropdownOpen(false);
+    dispatchFetchFilteredProperties();
+  };
+
+  const handleDoneRoomsClick = () => {
     setRoomsFilterText(
       `Rooms (Bed: ${minBedrooms}-${maxBedrooms}, Bath: ${minBathrooms}-${maxBathrooms})`
     );
-    setTypeDropdownOpen(false);
     setRoomsDropdownOpen(false);
+    dispatchFetchFilteredProperties();
+  };
+
+  const dispatchFetchFilteredProperties = () => {
+    const minPriceValue =
+      minPrice === "Any price" ? "" : convertPrice(minPrice);
+    const maxPriceValue =
+      maxPrice === "Any price" ? "" : convertPrice(maxPrice);
+
+    dispatch(
+      fetchFilteredProperties({
+        minPrice: minPriceValue,
+        maxPrice: maxPriceValue,
+        propertyTypes: selectedTypes,
+        minBedrooms: minBedrooms === "No min" ? "" : minBedrooms,
+        maxBedrooms: maxBedrooms === "No max" ? "" : maxBedrooms,
+        minBathrooms: minBathrooms === "No min" ? "" : minBathrooms,
+        maxBathrooms: maxBathrooms === "No max" ? "" : maxBathrooms,
+      })
+    );
   };
 
   const clearFilter = () => {
@@ -209,13 +185,31 @@ const Filter = () => {
     dispatch(fetchProperties());
   };
 
+  const togglePriceDropdown = () => {
+    setPriceDropdownOpen(!priceDropdownOpen);
+    setTypeDropdownOpen(false);
+    setRoomsDropdownOpen(false);
+  };
+
+  const toggleTypeDropdown = () => {
+    setTypeDropdownOpen(!typeDropdownOpen);
+    setPriceDropdownOpen(false);
+    setRoomsDropdownOpen(false);
+  };
+
+  const toggleRoomsDropdown = () => {
+    setRoomsDropdownOpen(!roomsDropdownOpen);
+    setPriceDropdownOpen(false);
+    setTypeDropdownOpen(false);
+  };
+
   return (
     <div className="w-full flex flex-col items-center justify-center py-2">
       <div className="hidden md:flex w-full px-2 py-2 gap-1 justify-start items-center">
         {/* Price Filter */}
-        <div className="relative ">
+        <div className="relative">
           <button
-            onClick={() => setPriceDropdownOpen(!priceDropdownOpen)}
+            onClick={togglePriceDropdown}
             className="pl-4 py-2 text-gray-700 rounded border border-black flex justify-center items-center"
           >
             {priceFilterText} <FaAngleDown className="mx-2 pr-2" />
@@ -257,7 +251,7 @@ const Filter = () => {
                   ))}
                 </select>
                 <button
-                  onClick={() => setPriceDropdownOpen(false)}
+                  onClick={handleDonePriceClick}
                   className="mt-2 px-4 py-2 bg-blue-500 text-white rounded-xl"
                 >
                   Done
@@ -268,9 +262,9 @@ const Filter = () => {
         </div>
 
         {/* Property Type Filter */}
-        <div className="relative ">
+        <div className="relative">
           <button
-            onClick={() => setTypeDropdownOpen(!typeDropdownOpen)}
+            onClick={toggleTypeDropdown}
             className="pl-4 py-2 text-gray-700 rounded border border-black flex justify-center items-center"
           >
             {typeFilterText} <FaAngleDown className="mx-2 pr-2" />
@@ -283,7 +277,7 @@ const Filter = () => {
               <div className="flex items-center justify-between px-4 font-sm">
                 <div className=" font-medium ">Property Type</div>
                 <button
-                  onClick={handleDoneClick}
+                  onClick={handleDoneTypeClick}
                   className="mt-2 px-4 py-2 border-0 underline  "
                 >
                   Done
@@ -310,18 +304,19 @@ const Filter = () => {
         </div>
 
         {/* Rooms Filter */}
-        <div className="relative ">
+        <div className="relative">
           <button
-            onClick={() => setRoomsDropdownOpen(!roomsDropdownOpen)}
+            onClick={toggleRoomsDropdown}
             className="pl-4 py-2 text-gray-700 rounded border border-black flex justify-center items-center"
           >
             {roomsFilterText} <FaAngleDown className="mx-2 pr-2" />
           </button>
           {roomsDropdownOpen && (
             <div
-              className="absolute z-10 mt-2 w-48 bg-white border rounded shadow-lg"
+              className="absolute z-10 mt-2 w-[300px] bg-white border rounded shadow-lg"
               ref={roomsDropdownRef}
             >
+              <div className="flex">
               <div className="px-4 py-3">
                 <label className="block text-sm font-medium text-gray-700">
                   Min Bedrooms
@@ -354,43 +349,46 @@ const Filter = () => {
                   ))}
                 </select>
               </div>
-              <div className="px-4 py-3">
-                <label className="block text-sm font-medium text-gray-700">
-                  Min Bathrooms
-                </label>
-                <select
-                  value={minBathrooms}
-                  onChange={(e) => handleMinBathroomsChange(e.target.value)}
-                  className="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
-                >
-                  {minBathroomsOptions.map((bathrooms) => (
-                    <option key={bathrooms} value={bathrooms}>
-                      {bathrooms}
-                    </option>
-                  ))}
-                </select>
               </div>
-              <div className="px-4 py-3">
-                <label className="block text-sm font-medium text-gray-700">
-                  Max Bathrooms
-                </label>
-                <select
-                  value={maxBathrooms}
-                  onChange={(e) => handleMaxBathroomsChange(e.target.value)}
-                  className="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
-                >
-                  {maxBathroomsOptions.map((bathrooms) => (
-                    <option key={bathrooms} value={bathrooms}>
-                      {bathrooms}
-                    </option>
-                  ))}
-                </select>
-                <button
-                  onClick={handleDoneClick}
-                  className="mt-2 px-4 py-2 bg-blue-500 text-white rounded"
-                >
-                  Done
-                </button>
+              <div className="flex">
+                <div className="px-4 py-3">
+                  <label className="block text-sm font-medium text-gray-700">
+                    Min Bathrooms
+                  </label>
+                  <select
+                    value={minBathrooms}
+                    onChange={(e) => handleMinBathroomsChange(e.target.value)}
+                    className="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+                  >
+                    {minBathroomsOptions.map((bathrooms) => (
+                      <option key={bathrooms} value={bathrooms}>
+                        {bathrooms}
+                      </option>
+                    ))}
+                  </select>
+                </div>
+                <div className="px-4 py-3">
+                  <label className="block text-sm font-medium text-gray-700">
+                    Max Bathrooms
+                  </label>
+                  <select
+                    value={maxBathrooms}
+                    onChange={(e) => handleMaxBathroomsChange(e.target.value)}
+                    className="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+                  >
+                    {maxBathroomsOptions.map((bathrooms) => (
+                      <option key={bathrooms} value={bathrooms}>
+                        {bathrooms}
+                      </option>
+                    ))}
+                  </select>
+                  <button
+                    onClick={handleDoneRoomsClick}
+                    className="mt-2 px-4 py-2 bg-blue-500 text-white rounded"
+                  >
+                    Done
+                  </button>
+                </div>
               </div>
             </div>
           )}
@@ -402,6 +400,82 @@ const Filter = () => {
         >
           Clear Filters
         </button>
+        <Menu
+          as="div"
+          className="relative inline-block sm:hidden text-left mx-2"
+        >
+          <div>
+            <MenuButton className="inline-flex w-full justify-center gap-x-1.5 rounded-md bg-white px-3 py-2 text-base font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50">
+              Filter
+              {/* <ChevronDownIcon
+                className="-mr-1 h-5 w-5 text-gray-400"
+                aria-hidden="true"
+              /> */}
+            </MenuButton>
+          </div>
+
+          <MenuItems
+            transition
+            className="absolute right-0 z-10 mt-2 w-56 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 transition focus:outline-none data-[closed]:scale-95 data-[closed]:transform data-[closed]:opacity-0 data-[enter]:duration-100 data-[leave]:duration-75 data-[enter]:ease-out data-[leave]:ease-in"
+          >
+            <div className="py-1">
+              <MenuItem>
+                {({ focus }) => (
+                  <a
+                    href="#"
+                    className={classNames(
+                      focus ? "bg-gray-100 text-gray-900" : "text-gray-700",
+                      "block px-4 py-2 text-sm"
+                    )}
+                  >
+                    Account settings
+                  </a>
+                )}
+              </MenuItem>
+              <MenuItem>
+                {({ focus }) => (
+                  <a
+                    href="#"
+                    className={classNames(
+                      focus ? "bg-gray-100 text-gray-900" : "text-gray-700",
+                      "block px-4 py-2 text-sm"
+                    )}
+                  >
+                    Support
+                  </a>
+                )}
+              </MenuItem>
+              <MenuItem>
+                {({ focus }) => (
+                  <a
+                    href="#"
+                    className={classNames(
+                      focus ? "bg-gray-100 text-gray-900" : "text-gray-700",
+                      "block px-4 py-2 text-sm"
+                    )}
+                  >
+                    License
+                  </a>
+                )}
+              </MenuItem>
+              <form method="POST" action="#">
+                <MenuItem>
+                  {({ focus }) => (
+                    <button
+                      type="submit"
+                      className={classNames(
+                        focus ? "bg-gray-100 text-gray-900" : "text-gray-700",
+                        "block w-full px-4 py-2 text-left text-sm"
+                      )}
+                    >
+                      Sign out
+                    </button>
+                  )}
+                </MenuItem>
+              </form>
+            </div>
+          </MenuItems>
+        </Menu>
         <button
           onClick={clearFilter}
           className="block md:hidden mx-3 px-2 py-2 bg-red-500 text-white rounded-full"

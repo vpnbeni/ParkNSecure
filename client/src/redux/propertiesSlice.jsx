@@ -4,9 +4,9 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 export const fetchProperties = createAsyncThunk(
   'properties/fetchProperties',
   async () => {
-    const response = await fetch(`http://192.168.1.77:4000/api/properties/all`);
+    const response = await fetch(`https://urdreamhoused-backend-1f3cc2e36009.herokuapp.com/api/properties/all`);
     const data = await response.json();
-    console.log(data.properties,"from thunk")
+    // console.log(data.properties,"from thunk")
     return data.properties;
   }
 );
@@ -14,7 +14,7 @@ export const fetchProperties = createAsyncThunk(
 export const fetchFilteredProperties = createAsyncThunk(
   'properties/fetchFilteredProperties',
   async ({ minPrice, maxPrice, propertyTypes, minBedrooms, maxBedrooms, minBathrooms, maxBathrooms }) => {
-    let url = `http://192.168.1.77:4000/api/properties/all?`;
+    let url = `https://urdreamhoused-backend-1f3cc2e36009.herokuapp.com/api/properties/all?`;
     if (minPrice) {
       url += `minPrice=${minPrice}&`;
     }

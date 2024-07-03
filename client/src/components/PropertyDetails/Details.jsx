@@ -34,8 +34,8 @@ const Details = () => {
           <div>
             <h3 className="text-base text-gray-700 mb-4">
               <div className="flex items-center justify-start">
-                <FaCircle className={`mr-2 text-yellow-600`} />
-                {property.status}
+                <FaCircle className={`mr-2 text-green-600`} />
+                {property.propertyType}
               </div>
             </h3>
             <h1 className="text-2xl font-semibold my-2">{property.price}</h1>

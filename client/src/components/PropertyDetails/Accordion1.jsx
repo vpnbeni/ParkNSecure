@@ -1,45 +1,58 @@
 // Accordion.js
 import { FaAngleDown } from "react-icons/fa6";
-import { useState } from "react";
-import img from '../../images/house1/11391521469302548625.jfif'
+import { useEffect, useState } from "react";
+import img from "../../images/house1/11391521469302548625.jfif";
+import { useParams } from "react-router-dom";
+import { useSelector } from "react-redux";
 const Accordion = () => {
   const [openIndex, setOpenIndex] = useState(null);
 
   const handleClick = (index) => {
     setOpenIndex(openIndex === index ? null : index);
   };
+  const { id } = useParams();
+  const { properties } = useSelector((state) => state.properties);
+  const [property, setProperty] = useState(null);
+
+  useEffect(() => {
+    const selectedProperty = properties.find((prop) => prop._id === id);
+    setProperty(selectedProperty);
+  }, [id, properties]);
+
+  if (!property) {
+    return <div>Property not found.</div>;
+  }
+
   const items = [
     {
       title: "Property details",
       content: (
         <div className="mx-4 w-full xl:w-11/12">
-          This is the largest unit in this complex. Built and owned by the
-          original developer, this unit comes with some extras, including a long
-          balcony to sit and watch those amazing Buck Island views . The large
-          upstairs bedroom also has its own private balcony to sit and end the
-          evening. Large open livin...{" "}
+          {property.description}
           <div className="font-semibold mt-4">Property features</div>
           <div className="font-semibold pt-4">Bedrooms</div>
           <hr />
-          <li>Bedrooms: 3</li>
+          <li>Bedrooms: {property.bedrooms}</li>
           <div className="font-semibold mt-4">Bathrooms</div>
-          <hr />
-          <div className="flex">
-          <li>Total Bathrooms: 3.00</li>
-          <li>Full Bathrooms: 3</li>
-          </div>
-          <button className="underline mt-4 flex items-center justify-start" >Show more <FaAngleDown /></button>
+          <li>Bathrooms: {property.bedrooms}</li>
+          
+          <button className="underline mt-4 flex items-center justify-start">
+            Show more <FaAngleDown />
+          </button>
           <div className="flex justify-center items-center my-6 ">
-            <div className="text-sm md:text-base">Find out more about this property.</div>
-            <button className="bg-black text-[10px] w-1/2 md:w-auto md:text-base text-white md:px-4 py-2 rounded-full mx-3">Contact Agent</button>
+            <div className="text-sm md:text-base">
+              Find out more about this property.
+            </div>
+            <button className="bg-black text-[10px] w-1/2 md:w-auto md:text-base text-white md:px-4 py-2 rounded-full mx-3">
+              Contact Agent
+            </button>
           </div>
           <div className="flex items-center justify-center my-4">
-          <img src={img} alt="" />
+            <img src={img} alt="" />
           </div>
           <div className="font-bold">Local Home Services</div>
-          <hr />  
+          <hr />
           <div className="text-xs mx-4 mb-4">Advertisement</div>
-         
         </div>
       ),
     },

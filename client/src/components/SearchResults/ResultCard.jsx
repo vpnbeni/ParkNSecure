@@ -1,20 +1,23 @@
 import { FaCircle } from "react-icons/fa";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-
+import Loader from "../Loader"
 const ResultCard = () => {
   const { properties, status, error } = useSelector(
     (state) => state.properties
 
   );
+  
 
-  console.log(properties ,'from card')
+  // console.log(properties ,'from card')
   if (status === "loading") {
-    return <div>Loading...</div>;
+    return <div>
+      <Loader/>
+    </div>;
   }
 
   if (status === "failed") {
-    return <div>Error: {error}</div>;
+    return <div className="w-full h-screen">Error: {error}</div>;
   }
 
   return (

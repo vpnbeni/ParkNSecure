@@ -47,8 +47,7 @@ const SidebarMenu = () => {
               <li className="p-2 hover:bg-gray-200"><Link>Find Realtors</Link></li>
               <li className="p-2 hover:bg-gray-200"><Link>My Home</Link></li>
               <li className="p-2 hover:bg-gray-200"><Link>News & Insights</Link></li>
-              <li className="p-2 hover:bg-gray-200 mt-10"><Link>Manage rentaks</Link></li>
-              <li className="p-2 hover:bg-gray-200"><Link>Advertise</Link></li>
+              
               <li className="p-2 hover:bg-gray-200 text-center mt-5"><button onClick={openModal}>Login</button></li>
               <li className="p-2 hover:bg-gray-200 bg-black rounded-full text-center text-white hover:text-black"><button onClick={openModal}>Signup</button></li>
               

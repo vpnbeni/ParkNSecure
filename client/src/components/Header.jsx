@@ -2,7 +2,7 @@ import { useState } from "react";
 
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
-import logo from "../images/logo.svg";
+import logo from "../images/ur house logo.png";
 import SidebarMenu from "./SideBar";
 import SignupModel from "./SignupLogin/Signup";
 import { BsPersonCircle } from "react-icons/bs";
@@ -37,7 +37,7 @@ const Header = () => {
           to={"/"}
           className="logo flex items-center justify-center h-12 m-0 p-0 cursor-pointer "
         >
-          <img className="w-36" src={logo} alt="" />
+          <img className="w-full " src={logo} alt="" />
         </Link>
         <div className="links flex mx-4">
           {[
